@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios'
+import ImageGrid from './ImageGrid'
 import "./App.css";
+// import {apiKey, aPod} from './constants';
 
 function App() {
+const [searchTerm, setSearchTerm] = useState("");
+const [searchRequest, setSearchRequest] = useState("");
+
+useEffect(() => {
+console.log('requesting new search')
+}, [searchRequest])
   return (
     <div className="App">
-      <p>
-        Read through the instructions in the README.md file to build your NASA
-        app! Have fun <span role="img" aria-label='go!'>🚀</span>!
-      </p>
+      {searchRequest !== "" && <ImageGrid />}
+      <form>
+        <label><input placeholder="Image Search" type="text" name="search" onChange={event => setSearchTerm(event.target.value)}/>
+            </label> 
+        <input type="submit" value="Search" onClick={event => {setSearchRequest(searchTerm); event.preventDefault()}}/>
+      </form>
     </div>
   );
 }
 
-export default App;
+export {App}
+
