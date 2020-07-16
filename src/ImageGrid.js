@@ -16,7 +16,7 @@ useEffect(() => {
 axios.get(`${imageLib}${searchRequest}`)
     .then(success => {
         console.log(success);
-        let total = success.data.collection.items.filter(x => x.href.includes('https://images-assets.nasa.gov/image') ? true : false);
+        let total = success.data.collection.items.filter(x => (x.href.includes('https://images-assets.nasa.gov/image')) ? true : false);
         setImagesObj(total.splice(0, total.length - (total.length - 20)).map(x => x.href));
     })
     .catch(fail => console.log('it failed'))
