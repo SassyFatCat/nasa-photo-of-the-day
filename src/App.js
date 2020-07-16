@@ -30,6 +30,12 @@ const TextInput = styled.input`
   border: 2px solid white;
   border-radius: 5px;
   color: white;
+  width: 50px;
+  transition: width .5s ease-in-out;
+  &:focus {
+    width: 200px;
+    transition: width .5s ease-in-out;
+  }
 `;
 
 const IconSpan = styled.span`
@@ -45,7 +51,6 @@ const IconSpan = styled.span`
 function App() {
 const [searchTerm, setSearchTerm] = useState("");
 const [searchRequest, setSearchRequest] = useState("");
-const [textSize, setTextSize] = useState(1);
 const [appWidth, setAppWidth] = useState(false)
 
 useEffect(() => {
@@ -57,7 +62,7 @@ searchRequest === "" ? setAppWidth(false) : setAppWidth(true)
       {searchRequest === "" && <AppH1>Search for NASA Images</AppH1>}
       {searchRequest === "" && <AppP>Background image compliments of NASA Photo of The Day</AppP>}
       <SearchBar searched={appWidth}>
-        <label><TextInput type="text" name="search" size={textSize} onChange={event => setSearchTerm(event.target.value)} onMouseOver={() => setTextSize(20)} onMouseLeave={() => setTextSize(searchTerm.length)}></TextInput>
+        <label><TextInput type="text" name="search" onChange={event => {setSearchTerm(event.target.value);}}></TextInput>
             </label> 
       <IconSpan><i onClick={event => {setSearchRequest(searchTerm); event.preventDefault(); setAppWidth(true)}} className="material-icons">search</i></IconSpan>
       </SearchBar>
