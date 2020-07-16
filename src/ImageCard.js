@@ -13,7 +13,7 @@ axios.get(imgAPI)
 
 
 return (
-    <div>
+    <div className='eachImg'>
         <img src={imgURL}></img>
     </div>
 ) 

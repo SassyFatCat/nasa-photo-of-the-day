@@ -11,7 +11,8 @@ const [searchRequest, setSearchRequest] = useState("");
 
   return (
     <div className="App">
-      <h1>Search for NASA Images</h1>
+      {searchRequest === "" && <h1>Search for NASA Images</h1>}
+      <h2>Background image compliments of NASA Photo of The Day</h2>
       {searchRequest !== "" && <ImageGrid searchRequest={searchRequest}/>}
       <form>
         <label><input placeholder="Image Search" type="text" name="search" onChange={event => setSearchTerm(event.target.value)}/>
