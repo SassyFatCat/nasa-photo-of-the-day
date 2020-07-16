@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import {apiKey, imageLib} from './constants';
 import axios from 'axios';
 import ImageCard from './ImageCard';
+import styled from 'styled-components';
 
+const ImageContainer = styled.div`
+
+    margin-top: 4%;
+`;
 
 function ImageGrid({searchRequest}) {
 const [imagesObj, setImagesObj] = useState([]);
@@ -21,14 +26,14 @@ axios.get(`${imageLib}${searchRequest}`)
 
 console.log(imagesObj)
 return (
-    <div>
+    <ImageContainer>
         <h1>The NASA images you searched for...</h1>
         <div className="imgContainer">
         {imagesObj.map(x => {
             return <ImageCard imgAPI={x}/>
         })}
         </div>
-    </div>
+    </ImageContainer>
 )
 }
 
